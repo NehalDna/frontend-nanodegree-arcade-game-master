@@ -3,7 +3,7 @@
 
 
 // Enemies our player must avoid
-var Enemy = function(x,y,speed) {
+var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     
@@ -65,7 +65,7 @@ class Hero {
          this.step = 101;
          this.jump = 83;
          this.startX = this.step * 2;
-         this.startY = (this.jump * 5) - 20;
+         this.startY = (this.jump * 4) + 55;
          this.x = this.startX;
          this.y = this.startY;
          
@@ -78,16 +78,32 @@ class Hero {
        }
 
        //Methods
-            // Updare Position
+            update(){
               // Check collision here
+              for(let enemy of allEnemies){            
+
                 //Did player x and y collide with enemy
+                if(this.y === enemy.y && (enemy.x + enemy.step > this.x
+                    && enemy.x < this.x + this.step/2) ){
+                    this.reset();
+                }
+                
+              }
               // Check win here?
                 // Did player x and y reach final tile
+            }
             // Render
               // Draw player spirte on current x and y coord positon
 
               // Handle Keyboard input
               // Update players x and y poroperty according to input
+
+              // Reset Hero
+            reset() {
+                // Set x and y to starting x and y 
+                this.y = this.startY;
+                this.x = this.startX; 
+            }
 
        /**
         * Update hero's x and y propert according to input
@@ -132,10 +148,9 @@ const bug3 = new Enemy((-101*2.5), 83, 300);
 const allEnemies = [];
 allEnemies.push(bug1,bug2,bug3);
     
-            // Reset Hero
-              // Set x and y to starting x and y
-
-          
+            
+            
+             
 
 
 // Now instantiate your objects.

@@ -93,12 +93,12 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
-        // //player.update();
+        player.update();
     }
 
     /* This function initially draws the "game level", it will then call
      * the renderEntities function. Remember, this function is called every
-     * game tick (or loop of the game engine) because that's how games work -
+     * game tick (or loop of the game exngine) because that's how games work -
      * they are flipbooks creating the illusion of animation but in reality
      * they are just drawing the entire screen over and over.
      */
