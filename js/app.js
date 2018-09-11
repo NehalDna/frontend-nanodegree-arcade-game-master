@@ -1,15 +1,18 @@
+
+
+
+
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-
-
-    // x pos
-    // y pos
-
+    
+    this.y = 0;
+    this.x = 0;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+    this.step = 101;
 };
 
 // Update the enemy's position, required method for game
@@ -21,9 +24,11 @@ Enemy.prototype.update = function(dt) {
 
 
     // If enemy is not passed boundary
+    if(this.x < this,this.step * 4){
       // move Forward
       // Increment x by speed * dt
-
+      this.x += 20 * dt;
+    }
     // else
       // Reset pos to start
 };
@@ -51,9 +56,14 @@ Enemy.prototype.render = function() {
        // sprite image
 class Hero {
       constructor(){
-         this.x = 0;
-         this.y = 0;
          this.sprite = 'images/char-boy.png';
+         this.step = 101;
+         this.jump = 83;
+         this.startX = this.step * 2;
+         this.startY = (this.jump * 5) - 20;
+         this.x = this.startX;
+         this.y = this.startY;
+         
 
       }
 
@@ -62,22 +72,59 @@ class Hero {
            ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
        }
 
-       
-
-  } 
-  const player = new Hero();
-
-    //Methods
+       //Methods
             // Updare Position
               // Check collision here
                 //Did player x and y collide with enemy
               // Check win here?
                 // Did player x and y reach final tile
             // Render
-              // Draw plyaer spirte on current x and y coord positon
+              // Draw player spirte on current x and y coord positon
 
-            // Handle Keyboard input
+              // Handle Keyboard input
               // Update players x and y poroperty according to input
+
+       /**
+        * Update hero's x and y propert according to input
+        * 
+        *  @param {string} input - Direction to Travel
+        */
+       handleInput(input){
+           switch(input){
+               case 'left':
+                if (this.x > 0){
+                 this.x -= this.step;
+                }
+                 break;
+               case 'up':
+                if (this.y > this.jump){
+                 this.y -= this.jump;
+                }
+                 break;
+               case 'right':
+               if (this.x < this.step * 4){
+                 this.x += this.step;
+                }
+                 break;
+               case 'down':
+               if (this,y < this,jump * 4){
+                 this.y += this.jump;
+                }
+                 break;
+           }
+
+
+       }
+
+       
+
+  } 
+  
+const player = new Hero();
+const bug1 = new Enemy();
+const allEnemies = [];
+allEnemies.push(bug1);
+    
             // Reset Hero
               // Set x and y to starting x and y
 
