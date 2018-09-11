@@ -1,3 +1,40 @@
 body {
     text-align: center;
 }
+
+.modal-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.438);
+}
+
+.modal__body{
+    position: relative; 
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    background: #ffffff;
+    transform: translate(-50%, -70%);
+}
+.modal__title{
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}
+.modal__button{
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.modal-button{
+    width: 60px;
+    height: 30px;
+}
+
+.hide {
+    display: none;
+}

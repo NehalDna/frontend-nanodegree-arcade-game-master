@@ -68,7 +68,7 @@ class Hero {
          this.startY = (this.jump * 4) + 55;
          this.x = this.startX;
          this.y = this.startY;
-         
+         this.victory = false;
 
       }
 
@@ -90,7 +90,10 @@ class Hero {
                 
               }
               // Check win here?
+              if(this.y === 55){
                 // Did player x and y reach final tile
+                this.victory = true;
+            }
             }
             // Render
               // Draw player spirte on current x and y coord positon
@@ -128,7 +131,7 @@ class Hero {
                 }
                  break;
                case 'down':
-               if (this,y < this,jump * 4){
+               if (this.y < this,jump * 4){
                  this.y += this.jump;
                 }
                  break;
