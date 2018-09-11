@@ -3,16 +3,19 @@
 
 
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x,y,speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     
-    this.y = 0;
-    this.x = 0;
+    this.y = y + 55; //center
+    this.x = x;  
+    this.speed = speed;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
     this.step = 101;
+    this.boundary = this.step * 5;
+    this.resetPos = -this.step;
 };
 
 // Update the enemy's position, required method for game
@@ -24,13 +27,15 @@ Enemy.prototype.update = function(dt) {
 
 
     // If enemy is not passed boundary
-    if(this.x < this,this.step * 4){
+    if(this.x < this.boundary){
       // move Forward
       // Increment x by speed * dt
-      this.x += 20 * dt;
+      this.x += this.speed * dt;
     }
-    // else
+    else{
       // Reset pos to start
+      this.x = this.resetPos;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -121,9 +126,11 @@ class Hero {
   } 
   
 const player = new Hero();
-const bug1 = new Enemy();
+const bug1 = new Enemy(-101, 0, 200);
+const bug2 = new Enemy(-101, 83, 300);
+const bug3 = new Enemy((-101*2.5), 83, 300);
 const allEnemies = [];
-allEnemies.push(bug1);
+allEnemies.push(bug1,bug2,bug3);
     
             // Reset Hero
               // Set x and y to starting x and y
